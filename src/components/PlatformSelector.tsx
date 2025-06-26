@@ -1,5 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList, Spinner } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import findPlatform from "../hooks/findPlatform";
 import usePlatforms from "../hooks/usePlatforms";
 
 interface Props {
@@ -13,7 +14,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   if (error) return null;
   if (isLoading) return <Spinner />;
 
-  const selectedPlatform = data?.results.find(p => p.id === selectedPlatformId);
+  const selectedPlatform = findPlatform(selectedPlatformId);
 
   return (
     <Menu>
